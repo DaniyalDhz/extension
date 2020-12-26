@@ -1,0 +1,137 @@
+body {
+  box-sizing: border-box;
+  font-family: monospace;
+  display: grid;
+  height: 90vh;
+  place-items: center;
+ }
+
+.app{
+    top: 50%;
+}
+
+.base-timer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+
+}
+
+/* scaleX(1) = CLOCKWISE, scaleX(-1) = ANTI-CLOCKWISE */
+.base-timer__svg {
+  transform: scaleX(1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+}
+
+.base-timer__path-remaining.arc {
+  color: rgba(179, 48, 102, 0.973)
+}
+
+.base-timer__label {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.buttons {
+  /* box-sizing: border-box; */
+  margin-left: 200px;
+  align-items: center;
+}
+
+
+.buttons button {
+  margin: 1rem;
+  border: none;
+  background-color: lightblue;
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  padding: .3rem;
+  font-size: 1.1rem;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+
+}
+
+.buttons button:hover {
+  background-color: rgba(179, 48, 102, 0.973);
+  color: white;
+}
+
+.buttons button:disabled {
+  cursor: not-allowed;
+}
+.buttons button:disabled:hover{
+  background-color:blue;
+}
+ 
+ 
+ .split {
+   height: 100%;
+   width: 50%;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   overflow-x: hidden;
+   padding-top: 20px;
+ }
+ 
+ /* Control the left side */
+ .left {
+   left: 0;
+   padding-top: 100px;
+ 
+ }
+ 
+ /* Control the right side */
+ .right {
+   right: 0;
+
+ 
+ }
+ 
+ /* If you want the content centered horizontally and vertically */
+ .centered {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   text-align: center;
+ }
+ 
+ /* Style the image inside the centered container, if needed */
+ .centered img {
+   width: 150px;
+   border-radius: 50%;
+ }
+ 

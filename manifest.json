@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "To be named",
+    "description": "This extension helps...",
+    "version": "0.1.0",
+    "permissions": [
+        "identity",
+        "identity.email"
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    },  
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["script.js"],
+        "css": ["styles.css"]
+    }]
+}

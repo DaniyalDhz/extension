@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Javascript Countdown</title>
+  <link href='https://fonts.googleapis.com/css?family=Arimo:700' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="split right">
+   <div class="centered">
+     <h2>Event.</h2>
+     <form id="frm1" action="#">
+      Event Name: <input type="text" name="fname"><br>
+      <input type="button" onclick="myFunction()" value="Submit">
+    </form>
+    
+    <script>
+    function myFunction() {
+      let eventName = document.getElementById("frm1").submit();
+      console.log('Hello');
+    }
+    </script>
+   </div>
+ </div>
+
+
+ <div class="split left">
+ 
+<body>
+  <div id="app">
+    <div class="base-timer">
+      <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g class="base-timer__circle">
+          <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+          <path id="base-timer-path-remaining" stroke-dasharray="283" class="base-timer__path-remaining arc"
+                d="
+                   M 50, 50
+                   m -45, 0
+                   a 45,45 0 1,0 90,0
+                   a 45,45 0 1,0 -90,0
+                   "></path>
+        </g>
+      </svg>
+      <span id="base-timer-label" class="base-timer__label"></span>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="start()" class="start" id="start">
+      Start
+    </button>
+    <button onclick="stop()" class="stop">
+      Stop
+    </button>
+    <button onclick="reset()" class="reset">
+      Reset
+    </button>
+  </div>
+
+</body>
+
+   </div>
+
+ 
+ <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
