@@ -5,14 +5,16 @@
     "version": "0.1.0",
     "permissions": [
         "identity",
-        "identity.email"
+        "identity.email",
+        "http://0.0.0.0:5000/test"
     ],
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["background.js"],
+        "persistent": false
     },  
     "content_scripts": [{
-        "matches": ["<all_urls>"],
-        "js": ["script.js"],
+        "matches": ["https://www.youtube.com/"], 
+        "js": ["content.js"],
         "css": ["styles.css"]
     }]
 }

@@ -47,7 +47,7 @@ body {
 }
 
 .base-timer__path-remaining.arc {
-  color: rgba(179, 48, 102, 0.973)
+  color: rgba(48, 153, 179, 0.973)
 }
 
 .base-timer__label {
@@ -84,7 +84,7 @@ body {
 }
 
 .buttons button:hover {
-  background-color: rgba(179, 48, 102, 0.973);
+  background-color: rgba(48, 79, 179, 0.973);
   color: white;
 }
 

@@ -6,10 +6,28 @@ Blog Link: https://bit.ly/3nH3AhO
 
 OG Pen Link : https://bit.ly/3fi7xXj
 */
+chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+  console.log(response.farewell);
+});
 
 
+/*
+This script is an extension to the one written
+by Mateusz Rybczonec on his CSS Tricks Blog
 
-console.log('working');
+Blog Link: https://bit.ly/3nH3AhO
+
+OG Pen Link : https://bit.ly/3fi7xXj
+*/
+let eventName
+fetch('http://0.0.0.0:5000/get/info')
+.then(response => response.json())
+.then(data => {
+    eventName = JSON.stringify(data)
+    console.log(eventName)
+}).catch(err => console.log('error message ' + err));
+var w = 'asdas';
+
 
 const FULL_DASH_ARRAY = 283;
 const RESET_DASH_ARRAY = `-57 ${FULL_DASH_ARRAY}`;
@@ -24,7 +42,7 @@ let timer = document.querySelector("#base-timer-path-remaining");
 let timeLabel = document.getElementById("base-timer-label");
 
 //Time related vars
-const TIME_LIMIT = 200; //in seconds
+const TIME_LIMIT = 30; //in seconds
 let timePassed = -1;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -58,7 +76,7 @@ function startTimer() {
     timeLeft = TIME_LIMIT - timePassed;
     timeLabel.innerHTML = formatTime(timeLeft);
     setCircleDasharray();
-
+    //document.getElementById("mytext").value = w;
     if (timeLeft === 0) {
       timeIsUp();
     }
@@ -85,8 +103,6 @@ function timeIsUp() {
   removeDisabled(stopBtn);
   clearInterval(timerInterval);
   let confirmReset = confirm("Time is UP! Wanna restart?");
-  //Call API
-  
   if (confirmReset) {
     reset();
     startTimer();
@@ -127,3 +143,5 @@ function setCircleDasharray() {
   console.log("setCircleDashArray: ", circleDasharray);
   timer.setAttribute("stroke-dasharray", circleDasharray);
 }
+
+
