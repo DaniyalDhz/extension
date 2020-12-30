@@ -4,54 +4,16 @@
   <meta charset="UTF-8">
   <title>CodePen - Javascript Countdown</title>
   <link href='https://fonts.googleapis.com/css?family=Arimo:700' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<!-- <div class="split right">
-   <div class="centered">
-     <h2>Event.</h2>
-     <input type="text" placeholder="Type something..." id="myInput">
-     <button type="button" onclick="getInputValue();">Get Value</button>
-     
-     <script>
-         function getInputValue(){
-             let inputVal = document.getElementById("myInput").value;
-            
-             chrome.runtime.sendMessage({event: inputVal}, function(response) {
-              console.log(response.farewell);
-            });
-            
-            }
-     </script>
-   </div>
- </div>
- -->
- 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-
-<script src="popup.js"></script>
-
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <form name="input" action="some.php" method="post">
  <input type="text" name="user" id="mytext">
  <input type="submit" value="Submit">
 </form>
 
-<script> //should be moved to content.js so it gets called after timer initiates
-  let eventName
-  fetch('http://0.0.0.0:5000/get/info')
-  .then(response => response.json())
-  .then(data => {
-      eventName = JSON.stringify(data)
-      console.log(eventName)
-  }).catch(err => console.log('error message ' + err));
-  
-  var w = 'asdas';
-  document.getElementById("mytext").value = w;
-
-</script>
 
 
 
@@ -94,7 +56,7 @@
 
  
  <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script><script  src="./script.js"></script>
+ <script src="./content.js"></script>
 
 </body>
 </html>

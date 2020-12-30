@@ -6,9 +6,9 @@ Blog Link: https://bit.ly/3nH3AhO
 
 OG Pen Link : https://bit.ly/3fi7xXj
 */
-chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-  console.log(response.farewell);
-});
+// chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+//   console.log(response.farewell);
+// });
 
 
 /*
