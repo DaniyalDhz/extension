@@ -42,7 +42,7 @@ let timer = document.querySelector("#base-timer-path-remaining");
 let timeLabel = document.getElementById("base-timer-label");
 
 //Time related vars
-const TIME_LIMIT = 30; //in seconds
+const TIME_LIMIT = 3; //in seconds
 let timePassed = -1;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -102,10 +102,10 @@ function timeIsUp() {
   setDisabled(startBtn);
   removeDisabled(stopBtn);
   clearInterval(timerInterval);
-  let confirmReset = confirm("Time is UP! Wanna restart?");
+  let confirmReset =  document.getElementById("mytext").value = w;
   if (confirmReset) {
     reset();
-    startTimer();
+    // startTimer();
   } else {
     reset();
   }
