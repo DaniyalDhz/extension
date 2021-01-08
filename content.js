@@ -1,36 +1,53 @@
-/*
-This script is an extension to the one written
-by Mateusz Rybczonec on his CSS Tricks Blog
 
-Blog Link: https://bit.ly/3nH3AhO
+//TODO: POST url image of user & save in flask db
 
-OG Pen Link : https://bit.ly/3fi7xXj
-*/
-// chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-//   console.log(response.farewell);
+
+
+// chrome.identity.getProfileUserInfo(function(userInfo) {
+//   console.log(JSON.stringify(userInfo));
+//   let userEmail = userInfo.email;
+//   let userId = userInfo.id;
 // });
 
+// function postEvent(){
+//   chrome.identity.getProfileUserInfo(function(userInfo) {
+//     console.log(JSON.stringify(userInfo));
+//     let userEmail = userInfo.email;
+//     let userId = userInfo.id;
+//     let calendarName = document.getElementById('mytext').onclick;
+//     fetch('http://0.0.0.1:5000/test',
+//     {
+//         method:'POST',
+//         body: JSON.stringify({"email":userEmail, "id":userId, 'CalendarName':'python event'}),
+//         headers: {
+//           "Content-Type": "application/json;charset=UTF-8",
+//           'Accept': 'application/json'
+//         }       
+//     })
+//   .then(response => response.json())
+//   .then(json => console.log(JSON.stringify(json)))
+//   .catch(console.log('didnt receive data')) //add err in function
+//   });
+// }
 
-/*
-This script is an extension to the one written
-by Mateusz Rybczonec on his CSS Tricks Blog
 
-Blog Link: https://bit.ly/3nH3AhO
-
-OG Pen Link : https://bit.ly/3fi7xXj
-*/
-let eventName
-fetch('http://0.0.0.0:5000/get/info')
-.then(response => response.json())
-.then(data => {
-    eventName = JSON.stringify(data)
-    console.log(eventName)
-}).catch(err => console.log('error message ' + err));
-var w = 'asdas';
+// fetch('http://0.0.0.0:5000/test',
+//     {
+//         method:'POST',
+//         body: JSON.stringify({"name":theeventName}),
+//         headers: {
+//           "Content-Type": "application/json;charset=UTF-8",
+//           'Accept': 'application/json'
+//         }       
+//     })
+//     .then(response => response.json())
+//   .then(json => console.log(JSON.stringify(json))); 
 
 
 const FULL_DASH_ARRAY = 283;
 const RESET_DASH_ARRAY = `-57 ${FULL_DASH_ARRAY}`;
+
+//TODO: timer funcs should be mvoed to background
 
 //All buttons
 let startBtn = document.querySelector(".start");
@@ -70,13 +87,13 @@ function stop() {
   clearInterval(timerInterval);
 }
 
-function startTimer() {
+function startTimer(eventName) {
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     timeLabel.innerHTML = formatTime(timeLeft);
     setCircleDasharray();
-    //document.getElementById("mytext").value = w;
+    document.getElementById("mytext").value = eventName;
     if (timeLeft === 0) {
       timeIsUp();
     }
@@ -102,7 +119,8 @@ function timeIsUp() {
   setDisabled(startBtn);
   removeDisabled(stopBtn);
   clearInterval(timerInterval);
-  let confirmReset =  document.getElementById("mytext").value = w;
+  // chrome.storage.local.get(['event'] = w);
+  let confirmReset = document.getElementById("mytext").value = w;
   if (confirmReset) {
     reset();
     // startTimer();
@@ -143,5 +161,24 @@ function setCircleDasharray() {
   console.log("setCircleDashArray: ", circleDasharray);
   timer.setAttribute("stroke-dasharray", circleDasharray);
 }
+
+
+// chrome.storage.local.get(['key'], function(result) {
+//   console.log('Value currently is front ' + result.key);
+// });
+
+
+console.log(typeof chrome.storage.local.get(['cal']));
+chrome.storage.local.get(['count'], function(result) {
+for (i of chrome.storage.local.get(['count']))
+  {
+    var option = document.createElement("option");
+    option.text = i;
+    option.value = "myvalue";
+    var select = document.getElementById("cars");
+    select.appendChild(option);
+    console.log(i + ' got appended')
+    }
+});
 
 

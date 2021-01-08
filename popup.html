@@ -9,7 +9,7 @@
 <body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-<form name="input" action="some.php" method="post">
+<form name="input">
  <input type="text" name="user" id="mytext">
  <input type="submit" value="Submit">
 </form>
@@ -17,7 +17,17 @@
 
 
 
- <div class="split left">
+<form>
+  <label for="cars"></label>
+  <select name="cars" id="cars">
+    <option value="volvo">volvo</option>
+    <option value="saab">Saab</option>
+  </select>
+  <br><br>
+</form>
+
+ 
+<div class="split left">
  
 <body>
   <div id="app">
@@ -45,9 +55,9 @@
     <button onclick="stop()" class="stop">
       Stop
     </button>
-    <button onclick="reset()" class="reset">
+    <!-- <button onclick="reset()" class="reset">
       Reset
-    </button>
+    </button> -->
   </div>
 
 </body>

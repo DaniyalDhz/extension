@@ -3,10 +3,18 @@
     "name": "To be named",
     "description": "This extension helps...",
     "version": "0.1.0",
+    "browser_action":{
+        "default_popup":"popup.html"
+    },
     "permissions": [
+        "storage",
         "identity",
         "identity.email",
-        "http://0.0.0.0:5000/test"
+        "http://127.0.0.1:5000/test",
+        "http://127.0.0.1:5000/get/info",
+        "http://127.0.0.1:5000/test",
+        "http://0.0.0.0:5000/test",
+        "http://127.0.0.1:5000/Time"
     ],
     "background": {
         "scripts": ["background.js"],
@@ -18,3 +26,4 @@
         "css": ["styles.css"]
     }]
 }
+
