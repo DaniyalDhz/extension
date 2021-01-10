@@ -44,22 +44,37 @@
 //   .then(json => console.log(JSON.stringify(json))); 
 
 
-chrome.storage.local.get(['key'], function(result) {
-  console.log('Value currently is front ' + result.key);
-});
+// chrome.storage.local.get(['key'], function(result) {
+//   console.log('Value currently is front ' + result.key);
+// });
 
 
 // console.log(typeof chrome.storage.local.get(['cal']));
 
-chrome.storage.local.get(['list'], function(result) {
-for (i of chrome.storage.local.get(['list']))
-  {
-    var option = document.createElement("option");
-    option.text = i;
-    option.value = "myvalue";
-    var select = document.getElementById("cars");
-    select.appendChild(option);
-    console.log(i + ' got appended')
-    }
-});
+// if (chrome.storage.local.get(['list'])){
+//   for (i of chrome.storage.local.get(['list']))
+//     {
+//       var option = document.createElement("option");
+//       option.text = i;
+//       option.value = "myvalue";
+//       var select = document.getElementById("cars");
+//       select.appendChild(option);
+//       console.log(i + ' got appended')
+//       }
+// };
+
+// chrome.storage.local.get(['list'], function(result) {
+//   for (i of chrome.storage.local.get(['list']))
+//     {
+//       var option = document.createElement("option");
+//       option.text = i;
+//       option.value = "myvalue";
+//       var select = document.getElementById("cars");
+//       select.appendChild(option);
+//       console.log(i + ' got appended')
+//       }
+// });
+
+
+
 

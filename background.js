@@ -2,26 +2,26 @@
 
 //----------------TIMER----------------------------------------------------------------
 
-const FULL_DASH_ARRAY = 283;
-const RESET_DASH_ARRAY = `-57 ${FULL_DASH_ARRAY}`;
+// const FULL_DASH_ARRAY = 283;
+// const RESET_DASH_ARRAY = `-57 ${FULL_DASH_ARRAY}`;
 
 //TODO: timer funcs should be mvoed to background
 
 //All buttons
-let startBtn = document.querySelector(".start");
-let stopBtn = document.querySelector(".stop");
-let resetBtn = document.querySelector(".reset");
+var startBtn = document.querySelector(".start");
+var stopBtn = document.querySelector(".stop");
+var resetBtn = document.querySelector(".reset");
 
 
 //DOM elements
-let timer = document.querySelector("#base-timer-path-remaining");
-let timeLabel = document.getElementById("base-timer-label");
+var timer = document.querySelector("#base-timer-path-remaining");
+var timeLabel = document.getElementById("base-timer-label");
 
 //Time related vars
-const TIME_LIMIT = 5; //in seconds
-let timePassed = -1;
-let timeLeft = TIME_LIMIT;
-let timerInterval = null;
+var TIME_LIMIT = 5; //in seconds
+var timePassed = -1;
+var timeLeft = TIME_LIMIT;
+var timerInterval = null;
 
 function reset() {
   clearInterval(timerInterval);
@@ -77,10 +77,10 @@ function startTimer(eventName) {
   }, 1000);
 }
 
-window.addEventListener("load", () => {
-  timeLabel.innerHTML = formatTime(TIME_LIMIT);
-  setDisabled(stopBtn);
-});
+// window.addEventListener("load", () => {
+//   timeLabel.innerHTML = formatTime(TIME_LIMIT);
+//   setDisabled(stopBtn);
+// });
 
 //---------------------------------------------
 //HELPER METHODS
@@ -163,13 +163,13 @@ function setCircleDasharray() {
 
 
 function checkLogin(event){
-  var eventName = document.forms["loginForm"]["fname"];
+  let eventName = document.forms["loginForm"]["fname"];
   console.log(eventName);
 }
 
 function getInputValue(){
   // Selecting the input element and get its value 
-  var inputVal = document.getElementById("myInput").value;
+  let inputVal = document.getElementById("myInput").value;
   
   // Displaying the value
   alert(inputVal);
@@ -209,6 +209,7 @@ function getInputValue(){
 
 function submit(){
   console.log('submitted');
+  alert('kheloo');
   chrome.identity.getProfileUserInfo(function(userInfo) {
     console.log(JSON.stringify(userInfo));
     let userEmail = userInfo.email;
@@ -218,18 +219,30 @@ function submit(){
     fetch('http://127.0.0.1:5000/execute',
     {
       method:'POST',
-      body: JSON.stringify({"email":userEmail, "id":userId, 'CalendarName':'python event'}),
+      body: JSON.stringify({"email":'daniyaldehleh@gmail.com', "id":userId, 'CalendarName':'python event'}),
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         'Accept': 'application/json'
       }       
     })
   .then(response => response.json())
-  .then(json => console.log(JSON.stringify(json)))
+  .then(json => chrome.storage.local.set({'executeResponse': json.message})) //TODO: should be displayed on the popup
   .catch(console.log('didnt receive data')) //add err in function
   });
 }
-// postEvent();
+
+
+var views = chrome.extension.getViews({
+  type: "popup"
+  });
+  for (var i = 0; i < views.length; i++) {
+  views[i].document.getElementById('checkButton').addEventListener("click", submit);
+  console.log("loaded");
+  }
+
+
+
+
 
 function current(){ //should be merged with start() func
   chrome.identity.getProfileUserInfo(function(userInfo) {

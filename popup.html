@@ -7,12 +7,12 @@
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
 
 <form name="input">
  <input type="text" name="user" id="mytext">
  <input type="submit" value="Submit">
-</form>
+</form> 
 
 
 
@@ -26,7 +26,7 @@
   <br><br>
 </form>
 
- 
+<!--  
 <div class="split left">
  
 <body>
@@ -46,7 +46,7 @@
       </svg>
       <span id="base-timer-label" class="base-timer__label"></span>
     </div>
-  </div>
+  </div> -->
 
   <div class="buttons">
     <button onclick="start()" class="start" id="start">
@@ -55,22 +55,30 @@
     <button onclick="stop()" class="stop">
       Stop
     </button>
-    <button onclick="submit()" class="submit">
+    <!-- <button onclick="submit()" class="submit" id='checkButton'>
+      Submit
+    </button> -->
+
+    <button class="submit" id='checkButton'>
       Submit
     </button>
+
     <!-- <button onclick="reset()" class="reset">
       Reset
     </button> -->
   </div>
   
+
+
+
 </body>
 
    </div>
 
  
  <!-- partial -->
- <script src="./content.js"></script>
- <script src="/background.js"></script>
+ <script type="text/javascript" src="./content.js"></script>
+ <script type="text/javascript" src="./background.js"></script>
 
 </body>
 </html>
