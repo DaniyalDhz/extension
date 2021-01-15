@@ -51,30 +51,28 @@
 
 // console.log(typeof chrome.storage.local.get(['cal']));
 
-// if (chrome.storage.local.get(['list'])){
-//   for (i of chrome.storage.local.get(['list']))
-//     {
-//       var option = document.createElement("option");
-//       option.text = i;
-//       option.value = "myvalue";
-//       var select = document.getElementById("cars");
-//       select.appendChild(option);
-//       console.log(i + ' got appended')
-//       }
-// };
+chrome.storage.local.get(['list'], function(result) {
+    if (result){
+        for (i of result.list)
+            {
+            var option = document.createElement("option");
+            option.text = i;
+            option.value = "myvalue";
+            // var select = document.getElementById("cars");
+            // var select = document.querySelector("cars");
+            var select = document.querySelector("#cars");
+            select.appendChild(option);
+            console.log(i + ' got appended')
+            }
+        }
+    else(console.log('no events'));
+});
 
-// chrome.storage.local.get(['list'], function(result) {
-//   for (i of chrome.storage.local.get(['list']))
-//     {
-//       var option = document.createElement("option");
-//       option.text = i;
-//       option.value = "myvalue";
-//       var select = document.getElementById("cars");
-//       select.appendChild(option);
-//       console.log(i + ' got appended')
-//       }
-// });
-
-
-
-
+chrome.storage.local.get(['currentEvent'], function(result) {
+    if (result){
+    document.getElementById("mytext").value = result.currentEvent;
+    console.log("the current event is "+ result.currentEvent)}
+    else{
+        console.log('no current event')
+    }
+  });

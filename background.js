@@ -214,12 +214,13 @@ function submit(){
     console.log(JSON.stringify(userInfo));
     let userEmail = userInfo.email;
     let userId = userInfo.id;
-    // let calendarName = document.getElementById('mytext').onclick;
+    calName = document.getElementById("cars"); //name of calendar (for goals)
+    // let eventName = document.getElementById('mytext').onclick; //eventName
     console.log(userEmail,userId)
     fetch('http://127.0.0.1:5000/execute',
     {
       method:'POST',
-      body: JSON.stringify({"email":'daniyaldehleh@gmail.com', "id":userId, 'CalendarName':'python event'}),
+      body: JSON.stringify({"email":'daniyaldehleh@gmail.com', "id":userId, 'callName':'Personal Finance' , 'eventName':'python event'}),
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         'Accept': 'application/json'
@@ -249,7 +250,7 @@ function current(){ //should be merged with start() func
     console.log(JSON.stringify(userInfo));
     let userEmail = userInfo.email;
     let userId = userInfo.id;
-    // let calendarName = document.getElementById('mytext').onclick;
+    
     console.log(userEmail,userId)
     fetch('http://127.0.0.1:5000/current',
     {
@@ -264,11 +265,19 @@ function current(){ //should be merged with start() func
   .then(function(json){
     chrome.storage.local.set({'currentEvent': json.event})
     chrome.storage.local.set({list: json.list})    
+    document.getElementById('mytext').onclick = json.event; //name of event
   })
   .catch(console.log('didnt receive data')) //add err in function
   });
 }
-// current();
+
+var views = chrome.extension.getViews({
+  type: "popup"
+  });
+  for (var i = 0; i < views.length; i++) {
+  views[i].document.getElementById('start').addEventListener("click", current);
+  console.log("loaded");
+  }
 
 
 chrome.storage.local.set({key: 'hello'}, function() {
