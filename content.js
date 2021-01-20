@@ -68,6 +68,25 @@ chrome.storage.local.get(['list'], function(result) {
     else(console.log('no events'));
 });
 
+chrome.storage.local.get(['dailyEvents'], function(result) {
+    if (result){
+        for (i of result.dailyEvents)
+            {
+            // var option = document.createElement("button");
+            // option.text = i;
+            // option.value = "myvalue";
+            // var select = document.querySelector("#cars");
+            // select.appendChild(option);
+            // console.log(i + ' got appended')
+            var btn = document.createElement("BUTTON");
+            btn.innerHTML = "CLICK ME";
+            document.body.appendChild(btn);
+            }
+        }
+    else(console.log('no events'));
+});
+
+
 chrome.storage.local.get(['currentEvent'], function(result) {
     if (result){
     document.getElementById("mytext").value = result.currentEvent;

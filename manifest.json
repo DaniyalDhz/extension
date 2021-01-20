@@ -16,6 +16,11 @@
         "http://0.0.0.0:5000/test",
         "http://127.0.0.1:5000/Time"
     ],
+
+    "oauth2":{
+        "client_id":"1097711827719-jbs18pu49qoa4vv3sdbedvtq31t7esr6.apps.googleusercontent.com",
+        "scopes":["https://www.googleapis.com/auth/userinfo.profile"]
+    },
     "background": {
         "scripts": ["background.js"],
         "persistent": false

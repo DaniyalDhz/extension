@@ -1,3 +1,23 @@
+body:after{
+  content: "beta";
+  position: fixed;
+  width: 80px;
+  height: 25px;
+  background: #EE8E4A;
+  top: 7px;
+  left: -20px;
+  text-align: center;
+  font-size: 13px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  line-height: 27px;
+  transform:rotate(-45deg);
+}
+
+
+/*  */
 body {
   box-sizing: border-box;
   font-family: monospace;
@@ -135,3 +155,7 @@ body {
    border-radius: 50%;
  }
  
+ /* Daily events button */
+ .btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+ .btn-labeled {padding-top: 0;padding-bottom: 0;}
+ .btn { margin-bottom:10px; }

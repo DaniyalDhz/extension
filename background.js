@@ -207,6 +207,14 @@ function getInputValue(){
 //         .then(response => response.json())
 //       .then(json => console.log(JSON.stringify(json))); 
 
+
+
+// chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+//   if (token){alert('token is ' + token)}
+//   else{alert('token not present')}
+// });  //possibly take out as access token wouldn't match with another as they frequently change
+
+
 function submit(){
   console.log('submitted');
   alert('kheloo');
@@ -232,7 +240,6 @@ function submit(){
   });
 }
 
-
 var views = chrome.extension.getViews({
   type: "popup"
   });
@@ -250,8 +257,6 @@ function current(){ //should be merged with start() func
     console.log(JSON.stringify(userInfo));
     let userEmail = userInfo.email;
     let userId = userInfo.id;
-    
-    console.log(userEmail,userId)
     fetch('http://127.0.0.1:5000/current',
     {
       method:'POST',
@@ -265,6 +270,7 @@ function current(){ //should be merged with start() func
   .then(function(json){
     chrome.storage.local.set({'currentEvent': json.event})
     chrome.storage.local.set({list: json.list})    
+    chrome.storage.local.set({dailyEvents: json.dailyEvents})    
     document.getElementById('mytext').onclick = json.event; //name of event
   })
   .catch(console.log('didnt receive data')) //add err in function
