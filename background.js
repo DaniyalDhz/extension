@@ -2,12 +2,6 @@
 
 //----------------TIMER----------------------------------------------------------------
 
-// const FULL_DASH_ARRAY = 283;
-// const RESET_DASH_ARRAY = `-57 ${FULL_DASH_ARRAY}`;
-
-//TODO: timer funcs should be mvoed to background
-
-//All buttons
 var startBtn = document.querySelector(".start");
 var stopBtn = document.querySelector(".stop");
 var resetBtn = document.querySelector(".reset");
@@ -32,12 +26,12 @@ function reset() {
 
 
 
-// function start() {
-//   startBut.removeEventListener("click", Start)
+function start() {
+  startBut.removeEventListener("click", Start)
   
-//   startBut.value = "Stop"
-//   startTimer();
-// }
+  startBut.value = "Stop"
+  startTimer();
+}
 
 
 function start(withReset = false) {
@@ -50,12 +44,12 @@ function start(withReset = false) {
   startTimer();
 }
 
-// function stop() {
-//   startBut.removeEventListener("click", Start)
-//   startBut.addEventListener("click",stop)
-//   startBut.value = "Start"
+function stop() {
+  startBut.removeEventListener("click", Start)
+  startBut.addEventListener("click",stop)
+  startBut.value = "Start"
   
-// }
+}
 
 function stop() {
   setDisabled(stopBtn);
@@ -77,10 +71,10 @@ function startTimer(eventName) {
   }, 1000);
 }
 
-// window.addEventListener("load", () => {
-//   timeLabel.innerHTML = formatTime(TIME_LIMIT);
-//   setDisabled(stopBtn);
-// });
+window.addEventListener("load", () => {
+  timeLabel.innerHTML = formatTime(TIME_LIMIT);
+  setDisabled(stopBtn);
+});
 
 //---------------------------------------------
 //HELPER METHODS
@@ -100,7 +94,7 @@ function timeIsUp() {
   let confirmReset = document.getElementById("mytext").value = w;
   if (confirmReset) {
     reset();
-    // startTimer();
+    startTimer();
   } else {
     reset();
   }
@@ -140,28 +134,6 @@ function setCircleDasharray() {
 }
 
 
-
-
-//-----------------------------------------------------------------------------------------
-//chrome identity
-
-
-
-// let email = 'daniyaldehleh@gmail.com'
-// let startTime = '2PM'
-// let endTime = '3PM'
-// let calendarName = 'programming'
-
-
-// let user = {
-//   'email':email,
-//   'startTime':startTime,
-//   'endTime':endTime,
-//   'calendarName':calendarName
-// };
-
-
-
 function checkLogin(event){
   let eventName = document.forms["loginForm"]["fname"];
   console.log(eventName);
@@ -174,7 +146,6 @@ function getInputValue(){
   // Displaying the value
   alert(inputVal);
 }
-
 
 
 // fetch('http://127.0.0.1:5000/get/info').then(response => response.json())
