@@ -1,151 +1,130 @@
+//CLOCK Start
+console.clear();
 
 
-//----------------TIMER----------------------------------------------------------------
+function CountdownTracker(label, value){
 
-var startBtn = document.querySelector(".start");
-var stopBtn = document.querySelector(".stop");
-var resetBtn = document.querySelector(".reset");
+  var el = document.createElement('span');
 
+  el.className = 'flip-clock__piece';
+  el.innerHTML = '<b class="flip-clock__card card"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' + 
+    '<span class="flip-clock__slot">' + label + '</span>';
 
-//DOM elements
-var timer = document.querySelector("#base-timer-path-remaining");
-var timeLabel = document.getElementById("base-timer-label");
+  this.el = el;
 
-//Time related vars
-var TIME_LIMIT = 5; //in seconds
-var timePassed = -1;
-var timeLeft = TIME_LIMIT;
-var timerInterval = null;
+  var top = el.querySelector('.card__top'),
+      bottom = el.querySelector('.card__bottom'),
+      back = el.querySelector('.card__back'),
+      backBottom = el.querySelector('.card__back .card__bottom');
 
-function reset() {
-  clearInterval(timerInterval);
-  resetVars();
-  startBtn.innerHTML = "Start";
-  timer.setAttribute("stroke-dasharray", RESET_DASH_ARRAY);
-}
+  this.update = function(val){
+    val = ( '0' + val ).slice(-2);
+    if ( val !== this.currentValue ) {
+      
+      if ( this.currentValue >= 0 ) {
+        back.setAttribute('data-value', this.currentValue);
+        bottom.setAttribute('data-value', this.currentValue);
+      }
+      this.currentValue = val;
+      top.innerText = this.currentValue;
+      backBottom.setAttribute('data-value', this.currentValue);
 
-
-
-function start() {
-  startBut.removeEventListener("click", Start)
-  
-  startBut.value = "Stop"
-  startTimer();
-}
-
-
-function start(withReset = false) {
-  setDisabled(startBtn);
-  removeDisabled(stopBtn);
-  startBtn.innerHTML = "Resume";
-  if (withReset) {
-    resetVars();
-  }
-  startTimer();
-}
-
-function stop() {
-  startBut.removeEventListener("click", Start)
-  startBut.addEventListener("click",stop)
-  startBut.value = "Start"
-  
-}
-
-function stop() {
-  setDisabled(stopBtn);
-  removeDisabled(startBtn);
-  startBtn.innerHTML = "Resume";
-  clearInterval(timerInterval);
-}
-
-function startTimer(eventName) {
-  timerInterval = setInterval(() => {
-    timePassed = timePassed += 1;
-    timeLeft = TIME_LIMIT - timePassed;
-    timeLabel.innerHTML = formatTime(timeLeft);
-    setCircleDasharray();
-    document.getElementById("mytext").value = eventName;
-    if (timeLeft === 0) {
-      timeIsUp();
+      this.el.classList.remove('flip');
+      void this.el.offsetWidth;
+      this.el.classList.add('flip');
     }
-  }, 1000);
-}
-
-window.addEventListener("load", () => {
-  timeLabel.innerHTML = formatTime(TIME_LIMIT);
-  setDisabled(stopBtn);
-});
-
-//---------------------------------------------
-//HELPER METHODS
-//---------------------------------------------
-function setDisabled(button) {
-  button.setAttribute("disabled", "disabled");
-}
-
-function removeDisabled(button) {
-  button.removeAttribute("disabled");
-}
-function timeIsUp() {
-  setDisabled(startBtn);
-  removeDisabled(stopBtn);
-  clearInterval(timerInterval);
-  // chrome.storage.local.get(['event'] = w);
-  let confirmReset = document.getElementById("mytext").value = w;
-  if (confirmReset) {
-    reset();
-    startTimer();
-  } else {
-    reset();
   }
-}
-
-function resetVars() {
-  removeDisabled(startBtn);
-  setDisabled(stopBtn);
-  timePassed = -1;
-  timeLeft = TIME_LIMIT;
-  console.log(timePassed, timeLeft);
-  timeLabel.innerHTML = formatTime(TIME_LIMIT);
-}
-
-function formatTime(time) {
-  const minutes = Math.floor(time / 60);
-  let seconds = time % 60;
-
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-
-  return `${minutes}:${seconds}`;
-}
-
-function calculateTimeFraction() {
-  const rawTimeFraction = timeLeft / TIME_LIMIT;
-  return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
-}
-
-function setCircleDasharray() {
-  const circleDasharray = `${(
-    calculateTimeFraction() * FULL_DASH_ARRAY
-  ).toFixed(0)} 283`;
-  console.log("setCircleDashArray: ", circleDasharray);
-  timer.setAttribute("stroke-dasharray", circleDasharray);
-}
-
-
-function checkLogin(event){
-  let eventName = document.forms["loginForm"]["fname"];
-  console.log(eventName);
-}
-
-function getInputValue(){
-  // Selecting the input element and get its value 
-  let inputVal = document.getElementById("myInput").value;
   
-  // Displaying the value
-  alert(inputVal);
+  this.update(value);
 }
+
+
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  return {
+    'Total': t,
+    'Minutes': Math.floor((t / 1000 / 60) % 60),
+    'Seconds': Math.floor((t / 1000) % 60)
+  };
+}
+
+function Clock(countdown,callback) {
+  
+  countdown = countdown ? new Date(Date.parse(countdown)) : false;
+  callback = callback || function(){};
+  
+  var updateFn = countdown ? getTimeRemaining : getTime;
+
+  this.el = document.createElement('div');
+  this.el.className = 'flip-clock';
+
+  var trackers = {},
+      t = updateFn(countdown),
+      key, timeinterval;
+
+  for ( key in t ){
+    if ( key === 'Total' ) { continue; }
+    trackers[key] = new CountdownTracker(key, t[key]);
+    this.el.appendChild(trackers[key].el);
+  }
+
+  var i = 0;
+  function updateClock() {
+    timeinterval = requestAnimationFrame(updateClock);
+    
+    // throttle so it's not constantly updating the time.
+    if ( i++ % 10 ) { return; }
+    
+    var t = updateFn(countdown);
+    if ( t.Total < 0 ) {
+      cancelAnimationFrame(timeinterval);
+      for ( key in trackers ){
+        trackers[key].update( 0 );
+      }
+      callback();
+      return;
+    }
+    
+    for ( key in trackers ){
+      trackers[key].update( t[key] );
+    }
+  }
+
+  setTimeout(updateClock,500);
+}
+
+var deadline = new Date(Date.parse(new Date()) + 12 * 24 * 60 * 60 * 1000);
+var c = new Clock(deadline, function(){ alert('countdown complete') });
+document.body.appendChild(c.el);
+
+var clock = new Clock();
+document.body.appendChild(clock.el);
+
+
+
+
+
+
+
+
+
+//CLOCK END
+
+// var clock;
+// // Instantiate a coutdown FlipClock 172800 = 48hrs
+// clock = $('.clock').FlipClock(2, {
+// 	clockFace: 'HourlyCounter',
+// 	countdown: true,
+// 	showSeconds: true,
+// 	callbacks: {
+// 		start: function() {
+// 			$('.message').html('The clock has started!');
+// 		},
+// 		stop: function() {
+// 			$('.message').html('The clock has stopped!');
+// 		}
+// 	}
+// });
 
 
 // fetch('http://127.0.0.1:5000/get/info').then(response => response.json())
