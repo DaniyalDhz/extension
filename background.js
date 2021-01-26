@@ -1,7 +1,6 @@
 //CLOCK Start
 console.clear();
 
-
 function CountdownTracker(label, value){
 
   var el = document.createElement('span');
