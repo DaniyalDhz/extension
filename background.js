@@ -109,22 +109,6 @@ document.body.appendChild(clock.el);
 
 //CLOCK END
 
-// var clock;
-// // Instantiate a coutdown FlipClock 172800 = 48hrs
-// clock = $('.clock').FlipClock(2, {
-// 	clockFace: 'HourlyCounter',
-// 	countdown: true,
-// 	showSeconds: true,
-// 	callbacks: {
-// 		start: function() {
-// 			$('.message').html('The clock has started!');
-// 		},
-// 		stop: function() {
-// 			$('.message').html('The clock has stopped!');
-// 		}
-// 	}
-// });
-
 
 // fetch('http://127.0.0.1:5000/get/info').then(response => response.json())
 // .then(data => {eventName = JSON.stringify(data); console.log(eventName)}).then(function(eventName){
@@ -177,7 +161,7 @@ function submit(){
     fetch('http://127.0.0.1:5000/execute',
     {
       method:'POST',
-      body: JSON.stringify({"email":'daniyaldehleh@gmail.com', "id":userId, 'callName':'Personal Finance' , 'eventName':'python event'}),
+      body: JSON.stringify({"email":'@gmail.com', "id":userId, 'callName':'Personal Finance' , 'eventName':'python event'}),
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         'Accept': 'application/json'
