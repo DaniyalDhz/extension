@@ -37,7 +37,7 @@
     <div class="message"></div>
 
 
-    <div id="flip-clock"></div>
+    <div id="flip-clock" class="flip-clock"></div>
 
 
 
@@ -46,7 +46,6 @@
         <input type="submit" value="Submit">
       </form> -->
 
-      
 
 
     <div class="buttons wrapper">
@@ -55,7 +54,6 @@
       </button>
 
       <div class="dropdown">
-        
         <form>
           <label for="cars"></label>
           <select name="cars" id="cars">
@@ -63,20 +61,20 @@
           </select>
           <br><br>
         </form>
+  
+        <!-- <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div> -->
       </div>
 
-
-      <button onclick="stop()" class="stop">
-        input
-      </button>
+      <input type="text" id="enter">
+      
       <!-- <button onclick="submit()" class="submit" id='checkButton'>
         Submit
       </button> -->
-
-
-
-
-
 
 
       <!-- <button onclick="reset()" class="reset">
@@ -100,11 +98,12 @@
 
 
     </div>
-
+    <button id="popup" class="feedback-button" >Feedback</button>
+    <script src="_include/js/feedback.js"></script>
+    
 
     <!-- partial -->
   </body>
-
 
 
 </html>

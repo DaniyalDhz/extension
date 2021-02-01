@@ -154,7 +154,7 @@ function submit() {
     const userEmail = userInfo.email
     const userId = userInfo.id
     calName = document.getElementById('cars') // name of calendar (for goals)
-    // let eventName = document.getElementById('mytext').onclick; //eventName
+    // let eventName = document.getElementById('enter').onclick; //eventName
     console.log(userEmail, userId)
     fetch('http://127.0.0.1:5000/execute', {
       method: 'POST',
@@ -182,7 +182,7 @@ var views = chrome.extension.getViews({
 })
 for (var i = 0; i < views.length; i++) {
   views[i].document
-    .getElementById('checkButton')
+    .getElementById('submit')
     .addEventListener('click', submit)
   console.log('loaded')
 }
@@ -206,7 +206,7 @@ function current() {
         chrome.storage.local.set({ currentEvent: json.event })
         chrome.storage.local.set({ list: json.list })
         chrome.storage.local.set({ dailyEvents: json.dailyEvents })
-        document.getElementById('mytext').onclick = json.event // name of event
+        document.getElementById('enter').onclick = json.event // name of event
       })
       .catch(console.log('didnt receive data')) // add err in function
   })

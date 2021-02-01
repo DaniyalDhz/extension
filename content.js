@@ -45,7 +45,7 @@ chrome.storage.local.get(['list'], function(result) {
 
 chrome.storage.local.get(['currentEvent'], function(result) {
     if (result){
-    document.getElementById("mytext").value = result.currentEvent;
+    document.getElementById("enter").value = result.currentEvent;
     console.log("the current event is "+ result.currentEvent)}
     else{
         console.log('no current event')
