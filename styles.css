@@ -6,7 +6,6 @@ html {
 }
 
 body {
-  min-height: 100%;
   justify-content: center;
   align-items: center;
   background: #EEE;
@@ -20,7 +19,6 @@ body {
 .flip-clock {
   text-align: center;
   perspective: 400px;
-  margin: 20px auto;
 }
 
 .flip-clock *, .flip-clock *:before, .flip-clock *:after {
@@ -33,7 +31,7 @@ body {
 }
 
 .flip-clock__slot {
-  font-size: 2vw;
+  font-size: 4vw;
 }
 
 .card {
@@ -199,7 +197,6 @@ body {
   font-family: monospace;
   display: flex;
   flex-direction: column-reverse;
-  height: 90vh;
   place-items: center;
 }
 
@@ -330,11 +327,11 @@ body {
   margin-right: 0.2rem;
   margin-left: 0.2rem;
   border: 2px solid;
-  width: 33vw;
-  height: 7vh;
+  width: 80px;
+  height: 19px;
   border-radius: 0px;
   padding: 0.3rem;
-  font-size: 1.1rem;
+  font-size: 8px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -410,4 +407,44 @@ body {
 
 .btn {
   margin-bottom: 10px;
+}
+
+/* styles.css | http://127.0.0.1:5500/styles.css?_cacheOverride=1612131978982 */
+
+.wrapper {
+  justify-content: center;
+}
+
+/* styles.css | http://127.0.0.1:5500/styles.css?_cacheOverride=1612132059025 */
+
+.wrapper {
+  justify-content: center;
+  margin: auto;
+  top: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.clock {
+  /* margin: 3em 1em; */
+  justify-content: center;
+}
+
+body {
+  /* height: 90vh; */
+}
+
+body {
+  /* min-height: 100%; */
+}
+
+.flip-clock {
+  /* margin: 20px auto; */
+  position: absolute;
+  top: 36px;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
