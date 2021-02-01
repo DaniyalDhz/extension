@@ -42,8 +42,9 @@ function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date())
   return {
     Total: t,
+    Hours: Math.floor((t / (1000 * 60 * 60)) % 24),
     Minutes: Math.floor((t / 1000 / 60) % 60),
-    Seconds: Math.floor((t / 1000) % 60)
+   
   }
 }
 
