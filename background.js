@@ -9,6 +9,8 @@ start.setHours(0,0,0,0)
 //======================================
 var now   = new Date();
 
+//seconds should not be displayed, as the wireframe showed.
+
 var diff = 0//(now.getTime() - start.getTime()) / 1000; //datetime from python should be here.
 
 	var clock = $('#clock1').FlipClock(diff, {
