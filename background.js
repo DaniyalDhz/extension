@@ -11,10 +11,11 @@ var now   = new Date();
 
 //seconds should not be displayed, as the wireframe showed.
 
-var diff = 0//(now.getTime() - start.getTime()) / 1000; //datetime from python should be here.
+var diff = (now.getTime() - start.getTime()) / 1000; //datetime from python should be here.
 
+//P.S: it'd be best if you could you vanilla instead of jquery as I'm not much familiar with the latter
 	var clock = $('#clock1').FlipClock(diff, {
 		clockFace: 'HourlyCounter',
 		countdown: false,
-		showSeconds: true
+    showSeconds: flase
 	});
