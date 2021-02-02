@@ -1,4 +1,6 @@
-//TODO: this should be replaced with a stopwatch as indicated.
+//TODO: this should be replaced with a stopwatch as indicated. (if you don't want use this code, sample stop watch codes can be found at:
+//https://codepen.io/Savassan/pen/vYEeQrX, https://codepen.io/blucube/pen/pgqRKr.
+
 console.clear()
 
 function CountdownTracker(label, value) {
