@@ -4,3 +4,5 @@
 - Once timer is done it should dropdown make a beep sound and dropdown to browser
 - The timer should first display the time (i.e. 30 seconds) and then run it
 Probably the simplest project you would ever do.
+
+Budget: $10 CAD
