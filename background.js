@@ -1,21 +1,39 @@
-//* Target Date Must be Like Below
-//var date = new Date("June 15, 2016 12:45:00");
+var clock = $('.clock').FlipClock(0, {
+	clockFace: 'HourlyCounter',
+	countdown: false });
+	
+function start(){
+	// clock = $('.clock').FlipClock(0, {
+	// clockFace: 'HourlyCounter',
+	// countdown: false });
+	// countup;	
+	// document.location.reload();
+	document.querySelector('#start').innerHTML = 'Extend';
+	document.querySelector('#start').onclick = extend();
+}
 
-// Just for running purpose
-//=======================================
-var start = new Date();
-start.setDate(start.getDate());
-start.setHours(0,0,0,0)
-//======================================
-var now   = new Date();
+function submit(){
+	document.querySelector('#start').innerHTML = 'Start';
+	clock.stop();
+	}
+let time = 2;
 
-//seconds should not be displayed, as the wireframe showed.
-
-var diff = (now.getTime() - start.getTime()) / 1000; //datetime from python should be here.
-
-//P.S: it'd be best if you could you vanilla instead of jquery as I'm not much familiar with the latter
-	var clock = $('#clock1').FlipClock(diff, {
+function extend(){
+	clock = $('.clock').FlipClock(time, {
 		clockFace: 'HourlyCounter',
-		countdown: false,
-    showSeconds: flase
+		countdown: false });
+	}
+
+let countup = setInterval(function () { 
+	if(clock.getTime().time > time) { 
+	clock.stop();
+	clearInterval(countup);
+	}
+	else{
+	var element = document.getElementById("stop");
+	element.addEventListener('click', function(){
+	submit();
 	});
+}
+}); 
+
