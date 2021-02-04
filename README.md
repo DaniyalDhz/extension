@@ -5,4 +5,3 @@
 - The timer should first display the time (i.e. 30 seconds) and then run it
 Probably the simplest project you would ever do.
 
-Budget: $10 CAD
