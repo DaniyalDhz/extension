@@ -11,7 +11,7 @@
         "storage",
         "identity",
         "identity.email",
-
+        "tabs",
         "http://127.0.0.1:5000/test",
         "http://127.0.0.1:5000/get/info",
         "http://127.0.0.1:5000/test",
@@ -19,13 +19,13 @@
         "http://127.0.0.1:5000/Time"
     ],
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["jquery-3.5.1.min.js","background.js","flipclock-min.js","script.js"],
         "persistent": false
     },  
     "content_scripts": [{
         "matches": ["https://www.blank.org/"], 
         "js": ["content.js"],
-        "css": ["styles.css"]
+        "css": ["styles.css","flipclock.css","normalize.min.css","css.css"]
     }]
 }
 

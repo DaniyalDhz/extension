@@ -1,30 +1,57 @@
 /* Clock start */
 
 html {
-  height: 200px;
-  width: 250px;
+  height: 227px;
+  width: 276px;
 }
 
+.flip-clock-label,
+.flip-clock-dot.top,
+.flip-clock-dot.bottom,
+.flip-clock-divider.days,
+.flip-clock-divider.hours,
+.clock ul:nth-child(1),
+.clock ul:nth-child(2),
+.clock ul:nth-child(3)
+{
+    display: none;
+}
 
+.flip-clock-label{
+  display: block;
+}
+
+#clock1 {
+	position: absolute;
+	top: 29%;
+	left: 126%;
+	width: 700px;
+	margin-left: -350px; /*set to a negative number 1/2 of your width*/
+	height:100px;
+	margin-top: -60px; /*set to a negative number 1/2 of your height*/
+}
+/* .flip-clock-divider.seconds , .flip-clock-divider.seconds ~ .flip.play {
+    display: none;
+}  */
 
 
 .feedback-button {
-  height: 40px;
+  /* height: 40px; */
   border: solid 3px #CCCCCC;
   background: #333;
-  width: 100px;
-  line-height: 32px;
-  -webkit-transform: rotate(-90deg);
+  /* width: 100px;
+  line-height: 32px; */
+  -webkit-transform: rotate(0deg);
   font-weight: 600;
   color: white;
-  transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
+  transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
   text-align: center;
   font-size: 17px;
   position: fixed;
-  right: -40px;
-  top: 45%;
+  right: 31%;
+  top: 88%;
   font-family: "Roboto", helvetica, arial, sans-serif;
   z-index: 999;
 }
@@ -211,6 +238,7 @@ body:after {
   color: #fff;
   line-height: 27px;
   transform: rotate(-45deg);
+  z-index: 10;
 }
 
 .clock {

@@ -1,10 +1,29 @@
 
+var globalInterval;
 
 // chrome.identity.getProfileUserInfo(function(userInfo) {
 //   console.log(JSON.stringify(userInfo));
 //   let userEmail = userInfo.email;
 //   let userId = userInfo.id;
 // });
+globalInterval = setInterval(() => {
+    var currenttime = localStorage.getItem('time');
+    var settime = localStorage.getItem('settime');
+    if(currenttime > settime)
+    {
+
+    }
+
+}, 500);
+
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if( request.message === "start" ) {
+       alert('')
+           }
+    }
+  );
 
 
 chrome.storage.local.get(['list'], function(result) {
