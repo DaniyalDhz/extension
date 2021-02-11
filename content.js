@@ -1,3 +1,5 @@
+//look like not imp file
+
 
 var globalInterval;
 
@@ -9,8 +11,7 @@ var globalInterval;
 globalInterval = setInterval(() => {
     var currenttime = localStorage.getItem('time');
     var settime = localStorage.getItem('settime');
-    if(currenttime > settime)
-    {
+    if (currenttime > settime) {
 
     }
 
@@ -19,17 +20,16 @@ globalInterval = setInterval(() => {
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-      if( request.message === "start" ) {
-       alert('')
-           }
+        if (request.message == "start") {
+            alert('')
+        }
     }
-  );
+);
 
 
 chrome.storage.local.get(['list'], function(result) {
-    if (result){
-        for (i of result.list)
-            {
+    if (result) {
+        for (i of result.list) {
             var option = document.createElement("option");
             option.text = i;
             option.value = "myvalue";
@@ -38,9 +38,8 @@ chrome.storage.local.get(['list'], function(result) {
             var select = document.querySelector("#cars");
             select.appendChild(option);
             console.log(i + ' got appended')
-            }
         }
-    else(console.log('no events'));
+    } else(console.log('no events'));
 });
 
 // chrome.storage.local.get(['dailyEvents'], function(result) {
@@ -63,10 +62,10 @@ chrome.storage.local.get(['list'], function(result) {
 
 
 chrome.storage.local.get(['currentEvent'], function(result) {
-    if (result){
-    document.getElementById("enter").value = result.currentEvent;
-    console.log("the current event is "+ result.currentEvent)}
-    else{
+    if (result) {
+        document.getElementById("enter").value = result.currentEvent;
+        console.log("the current event is " + result.currentEvent)
+    } else {
         console.log('no current event')
     }
-  });
+});
